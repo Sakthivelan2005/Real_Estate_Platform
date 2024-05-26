@@ -1,0 +1,149 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    font-family: monospace; 
+  }
+  body{
+    justify-content: center;
+    align-items: center;
+    background-image: url(image1.jpg);
+    background-size: cover;
+        
+  }
+  
+    header{
+          background-color: 16px 16px 48px #2e364330; 
+          display: block;
+          font-size: 30px;
+          font-weight: 700; 
+          text-align: center;
+          color: #525d6f; 
+          padding: 4%;
+          border-radius: 200px;
+    }
+    label{
+      font-size: 24px;
+      font-weight: 700; 
+      cursor: pointer; 
+      color: #525d6f; 
+      opacity: .4; 
+      transition: opacity .4s ease-in-out;
+      display: flex; 
+      height: calc(100% - 48px) ;
+      text-align: right; 
+      z-index: 100; 
+      user-select:contain;
+      margin-top: 17px;
+      margin-right: 12%;
+      margin-left: 9%;
+    }
+    label p {
+      display: none;
+    }
+    label img {
+      display: flex;
+    }
+    input[type="radio"]{
+      width: 0;
+    }
+    label:hover, input[type="radio"]:checked+label {
+      opacity: 1; 
+    }
+    .popup{
+      max-width: 1200px;
+      width: 100%;
+      height: 100%;
+      border-radius: 48px;
+      box-sizing: border-box; 
+      border: 16px solid #ffffff;
+      background-color: #dfe6ed;
+       overflow: scroll;
+      box-shadow: 16px 16px 48px #2e364330; 
+      display: flex;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .tabs{
+     
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 36%;
+      height: 58px;
+      display: flex;
+      justify-content: space-evenly;
+      padding-block: 15px 10px;
+      box-shadow: -2px 0 0px hsla(237, 71%, 52%, 0.2);
+      z-index: 3;
+      background: var(--white);
+      flex-direction: row;
+      
+    }
+  
+  
+   #content {
+      display: flex;
+      height: 181%;
+      width: 100%;
+      background-color: 16px 16px 48px #2e364330;
+     
+  }
+  
+    
+  object {
+      padding: 20px;
+      display: flex;
+      height: 100%;
+      width: 100%;
+      margin-right: 0%;
+      background-color: 16px 16px 48px #2e364330;
+     
+     
+   }
+  
+    .marker{
+      position: absolute;
+        width: 701%;
+        height: 629%;
+        display: flex;
+        flex-direction: row;
+        left: calc(-84%);
+        right: 0;
+        background-color: #dfe6ed;
+        transition: transform .2s ease-in-out;
+        border-radius: calc(-20px);
+    }
+    .marker #bottom, .marker #top{
+      background-color: #ffffff;
+      box-shadow: 32px 32px 32px #2e364315; 
+      z-index: 3;
+    }
+    .marker #top{
+      width: calc(33%);
+      margin-right: auto;
+      border-radius: 0 32px 32px 0;
+    }
+    .marker #bottom{
+      width: calc(72% - 100px);
+      border-radius: 32px 32px 0 0; 
+  
+    }
+    #tab1:checked ~ .marker{transform: translateX(calc(calc(-121% / 6) * 1));}
+    #tab2:checked ~ .marker{transform: translateX(calc(calc(-42% / 6) * 2));}
+    #tab3:checked ~ .marker{transform: translateX(calc(calc(-12% / 6) * 4));}
+    #tab4:checked ~ .marker{transform: translateX(calc(calc(-2% / 6) * 5));}
+    #tab5:checked ~ .marker{transform: translateX(calc(calc(5% / 6) * 6));}
+    #tab6:checked ~ .marker{transform: translateX(calc(calc(9% / 6) * 7));}
+  
+    footer {
+        
+          display: none;
+          
+          }  
+
+
+
+.property img {
+    height: auto;
+    width: auto;
+    display: auto;
+}
