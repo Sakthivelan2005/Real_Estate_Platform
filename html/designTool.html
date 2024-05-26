@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Floor Plan Creator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            overflow-y: scroll;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+        /* width */
+  ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  display: none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(12, 12, 15, 0.655); 
+}
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #canvas-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        canvas {
+            border: 2px solid #ccc;
+            background-color: #fff;
+            cursor: crosshair;
+        }
+
+        #tools {
+            width: 200px;
+            background-color: #f8f9fa;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        #tools h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #343a40;
+        }
+
+        .tool {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tool:hover {
+            background-color: #0056b3;
+        }
+
+        .tool:focus {
+            outline: none;
+        }
+
+        .resizable-handle {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            position: absolute;
+            z-index: 1;
+            display: none;
+        }
+
+        .resizable-container:hover .resizable-handle {
+            display: block;
+        }
+
+        .rotate-handle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            z-index: 1;
+            display: none;
+        }
+
+        .rotate-handle:hover {
+            cursor: pointer;
+        }
+
+        .rotate-container:hover .rotate-handle {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>House Floor Plan Creator</h1>
+</header>
+<main>
+    <div id="canvas-container">
+        Create your dream villa by using our advanced tool
+        <canvas id="canvas"></canvas>
+    </div>
+    <div id="tools">
+        
+<p id="total-square-footage">Total Square Footage: 0 sq. ft.</p>
+        <h2>Tools</h2>
+        <button id="horizontal-wall-tool" class="tool">Horizontal Wall</button>
+        <button id="vertical-wall-tool" class="tool">Vertical Wall</button>
+        <button id="door-tool" class="tool">Door</button>
+        <button id="window-tool" class="tool">Window</button>
+        <button id="erase-tool" class="tool">Erase</button>
+        <button id="rotate-tool" class="tool">Rotate</button>
+    </div>
+</main>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const tools = document.querySelectorAll('.tool');
+        const totalSquareFootageElement = document.getElementById('total-square-footage');
+
+        let currentTool = null;
+        let selectedImage = null;
+        let images = []; // Array to store all images
+        let isResizing = false;
+        let resizeIndex = -1;
+        let resizeHandleOffsetX = 0;
+        let resizeHandleOffsetY = 0;
+        let isRotating = false;
+        let rotateIndex = -1;
+        let isErasing = false;
+
+        canvas.width = window.innerWidth * 0.8;
+        canvas.height = window.innerHeight - 100;
+
+        const imageUrls = {
+            'horizontal-wall': 'Images/horizontal_wall_image.jpg',
+            'vertical-wall': 'Images/vertical_wall_image.jpg',
+            'door': 'Images/door_image.jpg',
+            'window': 'Images/window_image.jpg',
+           
+        };
+        
+    
+
+       function loadImage(url) {
+            const image = new Image();
+            image.src = url;
+            return image;
+        }
+        function drawImages() {
+            canvas.width = canvas.width; // Clear canvas
+            images.forEach((img, index) => {
+                ctx.save();
+                ctx.translate(img.x + img.width / 2, img.y + img.height / 2);
+                ctx.rotate(img.angle * Math.PI / 180);
+                ctx.drawImage(img.image, -img.width / 2, -img.height / 2, img.width, img.height);
+                ctx.restore();
+                if (index === resizeIndex) {
+                    ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+                    ctx.fillRect(img.x + img.width - 5, img.y + img.height - 5, 10, 10); // Drawing resize handle
+                }
+            });
+            if (isRotating) {
+                images.forEach((img, index) => {
+                    ctx.fillStyle = 'rgba(0, 255, 0, 0.5)';
+                    ctx.beginPath();
+                    ctx.arc(img.x + img.width / 2, img.y + img.height / 2, 15, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            }
+        }
+
+        
+        function calculateSquareFootage(width, height) {
+            return width * height;
+        }
+
+        function updateTotalSquareFootage() {
+            let totalSquareFootage = 0;
+            images.forEach(img => {
+                totalSquareFootage += calculateSquareFootage(img.width, img.height);
+            });
+            totalSquareFootageElement.textContent = "Total Square Footage: " + totalSquareFootage + " sq. ft.";
+        }
+
+        
+
+        function handleMouseDown(e) {
+            const offsetX = e.clientX - canvas.getBoundingClientRect().left;
+            const offsetY = e.clientY - canvas.getBoundingClientRect().top;
+
+            if (currentTool === 'erase') {
+                if (isRotating || isResizing) return;
+                // Check if clicked on an image to erase
+                for (let i = images.length - 1; i >= 0; i--) {
+                    const img = images[i];
+                    if (offsetX >= img.x && offsetX <= img.x + img.width &&
+                        offsetY >= img.y && offsetY <= img.y + img.height) {
+                        isErasing = true;
+                        images.splice(i, 1); // Remove the image
+                        drawImages();
+                        updateTotalSquareFootage();
+                        return;
+                    }
+                }
+            }
+
+            if (isRotating || isErasing) return;
+
+            // Check if clicked on a rotate handle
+            for (let i = images.length - 1; i >= 0; i--) {
+                const img = images[i];
+                const centerX = img.x + img.width / 2;
+                const centerY = img.y + img.height / 2;
+                const distance = Math.sqrt(Math.pow(offsetX - centerX, 2) + Math.pow(offsetY - centerY, 2));
+                if (distance <= 15) { // Radius of the rotate handle
+                    isRotating = true;
+                    rotateIndex = i;
+                    break;
+                }
+            }
+
+            // Check if clicked on a resize handle
+            for (let i = images.length - 1; i >= 0; i--) {
+                const img = images[i];
+                if (offsetX >= img.x + img.width - 5 && offsetX <= img.x + img.width + 5 &&
+                    offsetY >= img.y + img.height - 5 && offsetY <= img.y + img.height + 5) {
+                    isResizing = true;
+                    resizeIndex = i;
+                    resizeHandleOffsetX = offsetX - img.x;
+                    resizeHandleOffsetY = offsetY - img.y;
+                    break;
+                }
+            }
+
+            if (!isResizing && !isRotating && !isErasing) {
+                let clickedOnImage = false;
+                // Check if clicked on an existing image
+                for (let i = images.length - 1; i >= 0; i--) {
+                    const img = images[i];
+                    if (offsetX >= img.x && offsetX <= img.x + img.width &&
+                        offsetY >= img.y && offsetY <= img.y + img.height) {
+                        clickedOnImage = true;
+                        isResizing = true;
+                        resizeIndex = i;
+                        resizeHandleOffsetX = offsetX - img.x;
+                        resizeHandleOffsetY = offsetY - img.y;
+                        break;
+                    }
+                }
+                if (!clickedOnImage && currentTool && currentTool !== 'image') {
+                    images.push({
+                        image: selectedImage,
+                        x: offsetX,
+                        y: offsetY,
+                        width: selectedImage.width, // Use actual width of the image
+                        height: selectedImage.height, // Use actual height of the image
+                        angle: 0
+                    });
+
+                    drawImages();
+                    updateTotalSquareFootage();
+                }
+            }
+        }
+
+        function handleMouseMove(e) {
+            if (isResizing) {
+                const offsetX = e.clientX - canvas.getBoundingClientRect().left;
+                const offsetY = e.clientY - canvas.getBoundingClientRect().top;
+                const image = images[resizeIndex];
+
+                image.width = offsetX - image.x + resizeHandleOffsetX;
+                image.height = offsetY - image.y + resizeHandleOffsetY;
+
+                drawImages();
+                updateTotalSquareFootage();
+            }
+            if (isRotating) {
+                const offsetX = e.clientX - canvas.getBoundingClientRect().left;
+                const offsetY = e.clientY - canvas.getBoundingClientRect().top;
+                const image = images[rotateIndex];
+                const dx = offsetX - (image.x + image.width / 2);
+                const dy = offsetY - (image.y + image.height / 2);
+                const angle = Math.atan2(dy, dx);
+                image.angle = angle * 180 / Math.PI;
+
+                drawImages();
+            }
+        }
+
+        function handleMouseUp() {
+            isResizing = false;
+            isRotating = false;
+            isErasing = false;
+            resizeIndex = -1;
+            rotateIndex = -1;
+        }
+
+        tools.forEach(tool => {
+            tool.addEventListener('click', function () {
+                if (isRotating || isResizing || isErasing) return; // Prevent other actions if rotating, resizing, or erasing is in progress
+                currentTool = tool.id.replace('-tool', '');
+                if (currentTool === 'image') {
+                    alert('Please select a specific tool (e.g., Horizontal Wall, Vertical Wall) to use the image.');
+                    selectedImage = null;
+                    return;
+                }
+              
+                const imageUrl = imageUrls[currentTool];
+                selectedImage = loadImage(imageUrl);
+            });
+        });
+
+        canvas.addEventListener('mousedown', handleMouseDown);
+        canvas.addEventListener('mousemove', handleMouseMove);
+        canvas.addEventListener('mouseup', handleMouseUp);
+    });
+</script>
+</body>
+</html>

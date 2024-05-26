@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamHome Planner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+ /* width */
+ ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  display: none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(12, 12, 15, 0.655); 
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header p {
+    font-size: 18px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #fff;
+    color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+button a {
+    color: #3961ff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+button a:hover {
+    text-decoration: underline;
+}
+
+
+nav {
+    background-color: #333;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 50px 0;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.feature-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    width: 300px;
+    margin: 0 20px 20px 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #0056b3;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-icon {
+    display: inline-block;
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer{
+    display: flex;
+}
+.footer-content{
+    display: flex;
+    justify-content: space-around;
+}
+
+@media (max-width:820px) {
+    .footer-content{
+        flex-direction: column;
+    }
+    
+}
+    </style>
+    <script> 
+       document.getElementById("startPlanning").addEventListener("click", function() {
+    // Scroll to the features section when the "Start Planning" button is clicked
+    document.getElementById("features").scrollIntoView({ behavior: 'smooth' });
+});
+
+// Handle navigation menu clicks
+document.querySelectorAll('nav ul li a').forEach(item => {
+    item.addEventListener('click', event => {
+        event.preventDefault();
+        const target = document.querySelector(event.target.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+
+
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>DreamHome Planner</h1>
+            <p>Your Ultimate Home Planning Destination</p>
+            <button id="startPlanning" ><a href="designTool.html">Start Planning</a></button>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <section id="features">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h3>Home Design Tools</h3>
+                        <p>Create custom floor plans and visualize your dream home in 3D.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Budget Planner</h3>
+                        <p>Estimate costs and track expenses to stay within your budget.</p>
+                    </div>
+                    <!-- Include other feature items -->
+                </div>
+            </div>
+        </section>
+        <section id="about">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>DreamHome Planner is dedicated to helping you turn your dream home into a reality. Our team of experts is committed to providing you with the tools and resources you need to plan, design, and build the perfect home.</p>
+            </div>
+        </section>
+        <!-- Include other sections -->
+    </main>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h2>Contact Us</h2>
+                    <p><i class="fas fa-map-marker-alt icon"></i> 123 Pattinathar St, Mogappair East, Chennai, India</p>
+                    <p><i class="fas fa-envelope icon"></i> info@dreamhomeplanner.com</p>
+                    <p><i class="fas fa-phone icon"></i> 987-654-3210</p>
+                  </div>
+               
+                <div class="newsletter">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <form action="mailto:info@dreamhomeplanner.com" method="post">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>   
+        </footer>
+                
+        </div>
+        <header>
+            <div class="container">
+                <h1>DreamHome Planner</h1>
+                <p>Our Major Home Plannings for Construction site</p>
+                <button id="startPlanning" ><a href="plan.html">See our Plannings</a></button>
+            </div>
+        </header>
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main>
+            <section id="features">
+                <div class="container">
+                    <h2>Features</h2>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <h3>Home Design Tools</h3>
+                            <p>Create custom floor plans and visualize your dream home in 3D.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>Budget Planner</h3>
+                            <p>Estimate costs and track expenses to stay within your budget.</p>
+                        </div>
+                        <!-- Include other feature items -->
+                    </div>
+                </div>
+            </section>
+            <section id="about">
+                <div class="container">
+                    <h2>About Us</h2>
+                    <p>DreamHome Planner is dedicated to helping you turn your dream home into a reality. Our team of experts is committed to providing you with the tools and resources you need to plan, design, and build the perfect home.</p>
+                </div>
+            </section>
+            <!-- Include other sections -->
+        </main>
+        <footer id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="contact-info">
+                        <h2>Contact Us</h2>
+                        <p><i class="fas fa-map-marker-alt icon"></i> 123 Pattinathar St, Mogappair East, Chennai, India</p>
+                        <p><i class="fas fa-envelope icon"></i> info@dreamhomeplanner.com</p>
+                        <p><i class="fas fa-phone icon"></i> 987-654-3210</p>
+                      </div>
+                   
+                    <div class="newsletter">
+                        <h3>Subscribe to Our Newsletter</h3>
+                        <form action="mailto:info@dreamhomeplanner.com" method="post">
+                            <input type="email" name="email" placeholder="Enter your email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                 </div>
+                    </footer>
+               
+            </div>   
+</body>
+</html>

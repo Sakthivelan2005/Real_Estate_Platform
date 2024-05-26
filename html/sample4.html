@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    html,body{
+    height: 100%;
+    width: 100%;
+    font-family: monospace; 
+  }
+         body{
+      justify-content: center;
+      align-items: center;
+      background-image: url(image1.jpg);
+      background-size: cover;
+          
+    }
+
+     /* width */
+  ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  display: none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(12, 12, 15, 0.655); 
+}
+
+    header{
+          background-color: 16px 16px 48px #2e364330; 
+          display: block;
+          font-size: 30px;
+          font-weight: 700; 
+          text-align: center;
+          color: #525d6f; 
+          padding: 4%;
+          border-radius: 200px;
+    }
+    label{
+      font-size: 24px;
+      font-weight: 700; 
+      cursor: pointer; 
+      color: #525d6f; 
+      opacity: .4; 
+      transition: opacity .4s ease-in-out;
+      display: flex; 
+      height: calc(100% - 48px) ;
+      text-align: right; 
+      z-index: 100; 
+      user-select:contain;
+      margin-top: 17px;
+    }
+    label p{
+        display: none;
+    }
+    input[type="radio"]{
+      width: 0;
+    }
+    label:hover, input[type="radio"]:checked+label {
+      opacity: 1; 
+    }
+    .popup{
+      max-width: 1200px;
+      width: 100%;
+      height: 100%;
+      border-radius: 48px;
+      box-sizing: border-box; 
+      border: 16px solid #ffffff;
+      background-color: #dfe6ed;
+       overflow: scroll;
+      box-shadow: 16px 16px 48px #2e364330; 
+      display: contents;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .tabs{
+     
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 58px;
+      display: flex;
+      justify-content: space-evenly;
+      padding-block: 15px 10px;
+      box-shadow: -2px 0 0px hsla(237, 71%, 52%, 0.2);
+      z-index: 3;
+      background: var(--white);
+      
+    }
+  
+  
+   #content {
+      display: contents;
+      height: 181%;
+      width: 100%;
+      background-color: 16px 16px 48px #2e364330;
+     flex-direction: column ;
+   }
+  
+    
+  object {
+      padding: 20px;
+      display: flex;
+      height: 100%;
+      width: 100%;
+      margin-right: 0%;
+      background-color: 16px 16px 48px #2e364330;
+     
+     
+   }
+  
+    .marker{
+      position:absolute; 
+      width: 258%;
+      height: 200%;
+      display: flex; 
+      flex-direction:row;
+      left: calc(-172% );
+      right: 0;
+      background-color: #dfe6ed;
+      transition: transform .2s ease-in-out; 
+      border-radius: calc(-20px);
+    }
+    .marker #bottom, .marker #top{
+      background-color: #ffffff;
+      box-shadow: 32px 32px 32px #2e364315; 
+      z-index: 3;
+    }
+    .marker #top{
+      width: calc(32%);
+      margin-right: auto;
+      border-radius: 0 32px 32px 0;
+    }
+    .marker #bottom{
+      width: calc(72% - 100px);
+      border-radius: 32px 32px 0 0; 
+  
+    }
+    #tab1:checked ~ .marker{transform: translateX(calc(calc(157% / 8.5) * 2));}
+    #tab2:checked ~ .marker{transform: translateX(calc(calc(122% / 8.5) * 3));}
+    #tab3:checked ~ .marker{transform: translateX(calc(calc(105% / 8.5) * 4));}
+    #tab4:checked ~ .marker{transform: translateX(calc(calc(94% / 8.5) * 5));}
+    #tab5:checked ~ .marker{transform: translateX(calc(calc(88% / 8.5) * 6));}
+    #tab6:checked ~ .marker{transform: translateX(calc(calc(83% / 8.5) * 7));}
+  
+    @media only screen and (min-width: 200px) and (max-width: 600px){
+        .container {
+ flex-direction: column;
+ text-align: center;
+}
+    }
+ @media only screen and (min-width: 600px) and (max-width: 1100px) {
+    .marker #bottom {
+    width: calc(72% - 266px);
+    }
+    
+  }   
+
+  @media only screen and (min-width: 1100px) {
+    .marker #bottom {
+    width: calc(72% - 296px);
+    }
+  }   
+  /* Footer styling */
+footer {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #424242;
+  opacity: 83%;
+  border-radius: calc(28px);
+  color: white;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+/* Main content styling */
+main {
+  padding: 50px 0;
+}
+
+/* Heading 2 styling */
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Footer content section */
+.footer-content {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin-left: 2%;
+}
+
+/* Contact information styling */
+.contact-info p {
+  margin-bottom: 10px;
+}
+
+/* Newsletter input styling */
+.newsletter input[type="email"] {
+  padding: 10px;
+  width: 200px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Newsletter button styling */
+.newsletter button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+  background-color: #0056b3;
+}
+
+/* Social links styling */
+.social-links {
+  margin-top: 20px;
+}
+
+/* Individual social icon styling */
+.social-icon {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+/* Footer bottom styling */
+.footer-bottom {
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  position: relative; 
+  overflow: hidden;
+  background-color: black;
+}
+
+/* Paragraph inside footer-bottom */
+.footer-bottom p {
+  margin: 0;
+  opacity: 0; 
+  animation: fadeIn 1s forwards, colorChange 4s infinite; 
+  color: aqua;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Optional: You can add some subtle animation like a slight vertical movement */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes colorChange {
+  0% {
+   opacity: calc(0deg);
+  }
+  50% {
+    opacity: calc(20deg);
+  }
+  100% {
+    opacity: calc(40deg);
+  }
+} .PrivacyPolicy {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  font-family: Arial, sans-serif;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+.PrivacyPolicy:hover {
+  background-color: #ffcc00;
+}
+.PrivacyPolicy a {
+  color: #007bff;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+.PrivacyPolicy:hover a {
+  color: #fff;
+}
+.PrivacyPolicy::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #ff0000, #ffcc00, #00ff00);
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 1;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.PrivacyPolicy:hover::before {
+  transform: scaleX(1.4);
+  left: 100%;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  height: 190%;
+}
+    </style>
+</head>
+<body>
+    <header>Real Estate Platform</header>  
+    <div class="main">  
+    <div class="popup">
+        <div id="content">
+            <!-- Content will be loaded here -->
+            <object type="text/html" data="home.html">
+            </object>
+          </div>
+            <footer id="contact">
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="contact-info">
+                            <h2>Contact Us</h2>
+                            <p><i class="fas fa-map-marker-alt icon"></i> 123 Pattinathar St, Mogappair East, Chennai, India</p>
+                            <p><i class="fas fa-envelope icon"></i> info@dreamhomeplanner.com</p>
+                            <p><i class="fas fa-phone icon"></i> 987-654-3210</p>
+                          </div>
+                        </div>
+                        <div class="newsletter">
+                            <h3>Subscribe to Our Newsletter</h3>
+                            <form action="#" method="post">
+                                <input type="email" name="email" placeholder="Enter your email" required>
+                                <button type="submit">Subscribe</button>
+                            </form>
+                        </div>
+                        <div class="social-links">
+                          <h3>Follow Us</h3>
+                          <a href="#" class="social-icon"> <div><img src="Images/facebook_2504903.png" alt=""></div><div>Facebook</div> </a>
+                          <a href="#" class="social-icon"> <div><img src="Images/instagram_174855.png" alt=""></div><div>Instagram</div></a>
+                          <a href="#" class="social-icon"> <div><img src="Images/github_3291695.png" alt=""></div><div>GitHub</div></a>
+                        </div>
+                   
+                </div>   
+        
+                    <div class="PrivacyPolicy"><a href="privacyPolicy.html"> Privacy policy</a></div>
+                   
+            <div class="footer-bottom">
+               <marquee behavior="group_12099678" direction="left"> <p>&copy; 2024 DreamHome Planner. All rights reserved.</p></marquee>
+            </div>
+       
+        </footer>
+      </div> 
+       
+ 
+        <div class="tabs">
+            <input type="radio" id="tab1" name="tab" value="home" checked="true">        
+            <label for="tab1"><i> <img src="Images/home-icon-silhouette_69524.png" alt=""><p>Home</p> </i></label>
+            <input type="radio" id="tab2" name="tab" value="blogs">
+            <label for="tab2"><i> <img src="Images/communication_15047400.png" alt=""><p>Blogs</p></i></label>
+            <input type="radio" id="tab3" name="tab" value="product">
+            <label for="tab3"><i> <img src="Images/checklist_7643898.png" alt=""><p>Products</p></i></label>
+            <input type="radio" id="tab4" name="tab" value="aboutUs">
+            <label for="tab4"><i><img src="Images/group_12099678.png" alt=""><p>About Us</p></i></label>
+            <input type="radio" id="tab5" name="tab" value="Visme Forms Player">
+            <label for="tab5"><i><img src="Images/customer-support_2951105.png" alt=""><p>Contact Us</p></i></label>
+            <input type="radio" id="tab6" name="tab" value="service">
+            <label for="tab6"><i><img src="Images/customer_686348.png" alt=""><p>Service</p></i></label>
+            <div class="marker">
+                <div id="top"></div>
+                <div id="bottom"></div>
+            </div>
+         </div>  
+        
+    </div>
+    
+    <script>
+        
+// Function to load content into the #content div
+function loadPage(page) {
+    var contentDiv = document.getElementById('content');
+    contentDiv.innerHTML = '<object type="text/html" data="' + page + '.html"></object>';
+}
+
+// Add event listeners to radio buttons
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    if (this.checked) {
+      // Load the corresponding webpage when a radio button is selected
+      loadPage(this.value);
+    }
+  });
+});
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2e364330;
+            margin: 0;
+            padding: 0;
+        }
+
+        #property-listings {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .property {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            width: 300px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .property:hover {
+            transform: scale(5px);
+        }
+  
+         /* width */
+  ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  display: none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(12, 12, 15, 0.655); 
+}
+
+        .property a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+           
+        }
+
+        .property h2,h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .property p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .image-gallery:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-labels {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+        }
+
+        .image-labels div {
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 5px;
+            font-size: 12px;
+        }
+
+        /* Define different colors for labels */
+        .label-sale {
+            background-color: #ff6347; /* Tomato */
+            color: white;
+        }
+
+        .label-rent {
+            background-color: #4682b4; /* Steel Blue */
+            color: white;
+        }
+
+        .label-lease {
+            background-color: #32cd32; /* Lime Green */
+            color: white;
+        }
+   
+    
+.profile{
+    position: absolute;
+      margin: 2%;
+  
+  }
+  .profile img{
+    border-radius: 20px;
+    height: 38px;
+    width: 38px;
+    transform: scale(1.5);
+  }
+  .profile img:hover{
+    transform: scale(1.7);
+  }
+  .NButton {
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+      }
+  
+      .NButton a{
+        color: white;
+      }
+  
+    </style>
+    <div id="property-listings"></div>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Dummy property data (to be fetched from server in real implementation)
+    const properties = [
+      {
+        title: 'Golden Sand Residences',
+        price: 200000,
+        location: 'Chennai',
+        images: ['Images/iamge2.jpg'],
+        href: "page4.html",
+        labels: ['Sale'],
+        bhk: 1,
+        toilet: 1,
+        sq: 3400,
+        profile: ["Images/Daya.png"]   ,
+        agentName: "Dayanithi Natarajan" ,
+        call:"9876543210"
+      },
+      { 
+        title: 'Vedic View Residences',
+        price: 150000,
+        location: 'Bangalore',
+        images: ['Images/image1.jpg'],
+        href: "page2.html",
+        labels: ['Rent'],
+        bhk: 3,
+        toilet:3,
+        sq: 4500,
+        profile: ["Images/sakthi.png"]   ,
+        agentName: "Sakthivelan",
+        call: "+918305418689"
+      },
+      {
+        title: 'Magnolia Manor',
+        price: 150000,
+        location: 'Mumbai',
+        images: ['Images/list1.webp'],
+        href: "page3.html",
+        labels: ['Lease'],
+        bhk: 3,
+        toilet:4,
+        sq: 1200,
+        profile: ["Images/Jaidan.png"]   ,
+        agentName: "Jaidan Ray",
+        call: "+918726349402"
+      },
+      {
+        title: 'Coastal Pearl Apartments',
+        price: 150000,
+        location: 'Chidhambaram',
+        images: ['Images/Apartment.png'],
+        href: "page1.html",
+        labels: ['Sale', 'Rent'],
+        bhk: 3,
+        toilet:5,
+        sq:3400,
+        profile: ["Images/joshua.png"]   ,
+        agentName: "Joshua Joy",
+        call: "+919273839032"
+      },
+      {
+        title: 'Sundaram Villa',
+        price: 150000,
+        location: 'Madurai',
+        images: ['Images/list3.jpg'],
+        href: "page5.html",
+        labels: ['Sale'],
+        bhk: 2,
+        toilet:2,
+        sq:5437,
+        profile: ["Images/hariharan.png"]   ,
+        agentName: "Hariharan",
+        call: "+91983903892"
+      },
+      {
+      title: "Chennai Sanctuary",
+      price: 2460000, 
+      location: "Kanchipuram", 
+      images: ["Images/list1.webp"],
+      href: "#",  
+      labels: ["Sale"],
+        bhk: 1,
+        toilet:1,
+        sq:8754,
+        profile: ["Images/padmavthi.png"]   ,
+        agentName: "Padmavathi",
+        call: "+919123456780" 
+       },
+    {
+      title: "Elysium Estates",
+      price: 7390000,  
+      location: "Velore", 
+      images: ["Images/list2.jpeg"],
+      href: "#", 
+      labels: ["Rent"],
+        bhk: 2,
+        toilet:2,
+        sq: 9675,
+        profile: ["Images/vikram.png"]   ,
+        agentName: "Vikram",
+        call: "+7654321098"
+    },
+    {
+      title: "Vedic View Residences",
+      price: 802000,  
+      location: "Vandalore",  
+      images: ["Images/list3.jpg"],
+      href: "#", 
+      labels: ["Sale", "Lease"],
+        bhk: 2,
+        toilet:1,
+        sq: 3443.89,
+        profile: ["Images/abirami.png"]   ,
+        agentName: "Abirami",
+        call: "+919078654321"
+      }
+    ];
+    
+    const propertyListingsSection = document.getElementById('property-listings');
+    
+    // Render property listings
+    properties.forEach(property => {
+      const propertyElement = document.createElement('div');
+      propertyElement.classList.add('property');
+      propertyElement.innerHTML = `
+          <a href="${property.href}">
+          <h2>${property.title}</h2>
+          <div class="image-gallery">
+              ${property.images.map(image => `
+                  <div>
+                      <img src="${image}" alt="${property.title}" width=550 length=100>
+                      <div class="image-labels">
+                          ${property.labels.map(label => `
+                              <div class="label-${label.toLowerCase()}">${label}</div>
+                          `).join('')}
+                      </div>
+                  </div>
+              `).join('')}
+          </div>
+          </a>
+          
+          <p><h3>₹${property.price}/-</h3></p>
+          <p><i class="fas fa-bed"></i> ${property.bhk}   |   <i class="fas fa-toilet"></i> ${property.toilet}   |  <i class="fas fa-ruler-combined"></i> ${property.sq}sq.ft</p>
+          <p></p>
+          <p><i class="fas fa-map-marker-alt icon"></i> ${property.location}</p>
+          <hr>
+          <div class="profile"> <img src="${property.profile}"></div>
+          <p> <h3>${property.agentName}</h3> Real Estate Agent <br><br><div class="NButton"><a href="tel:${property.call} "><i class="fas fa-phone"></i>  ${property.call}</a> </div></p>
+         
+      `;
+      propertyListingsSection.appendChild(propertyElement);
+    });
+  });
+  
+      </script>
+</body>
+</html>

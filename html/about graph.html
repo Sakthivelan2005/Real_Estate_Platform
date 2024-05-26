@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Company Trend</title>
+  <!-- Add Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Add your CSS styles here */
+    canvas {
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div style="width: 80%; margin: 50px auto;">
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <!-- Add your JavaScript code here -->
+  <script>
+    // Sample data for company trend (you can replace this with your own data)
+    const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024];
+    const revenueData = [500000, 600000, 550000, 650000, 730000, 1090000, 1190000];
+    const unitsSoldData = [94, 110, 100, 130, 135, 165, 160];
+
+    // Create a line chart using Chart.js
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: years,
+        datasets: [{
+          label: 'Revenue ($)',
+          data: revenueData,
+          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          fill: true,
+          yAxisID: 'revenue-y-axis'
+        }, {
+          label: 'Units Sold',
+          data: unitsSoldData,
+          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          fill: true,
+          yAxisID: 'units-y-axis'
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            display: true,
+            title: {
+              display: true,
+              text: 'Year'
+            }
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: 'Revenue ($)'
+            },
+            position: 'left',
+            id: 'revenue-y-axis'
+          },
+          units: {
+            display: true,
+            title: {
+              display: true,
+              text: 'Units Sold'
+            },
+            position: 'right',
+            id: 'units-y-axis'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
