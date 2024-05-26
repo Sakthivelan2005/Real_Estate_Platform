@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #dfe6ed;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         /* width */
+  ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  display: none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(12, 12, 15, 0.655); 
+}
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        #seller-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h3 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .radio-group {
+            margin-bottom: 20px;
+        }
+        
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        input[type="radio"]:hover {
+            cursor: pointer;
+        }
+        
+        input[type="radio"]:focus {
+            outline: none;
+        }
+        
+        input[type="number"],
+        input[type="text"],
+        input[type="file"],
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="number"]:hover,
+        input[type="text"]:hover,
+        input[type="file"]:hover,
+        button[type="submit"]:hover {
+            border-color: #007bff;
+        }
+        
+        input[type="number"]:focus,
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seller Form</h1>
+    <form id="seller-form">
+        <h3>Please fill the following details</h3>
+        <p>Mode of selling Home: </p>  
+        <div class="radio-group">
+            <label for="lease"><input type="radio" id="lease" name="home" value="1"> Lease</label>
+        </div>
+        <div class="radio-group">
+            <label for="rent"><input type="radio" id="rent" name="home" value="2"> Rent</label>
+        </div>
+        <div class="radio-group">
+            <label for="sale"><input type="radio" id="sale" name="home" value="3"> Sale</label>
+        </div>
+        <label for="amount">Rate:</label>
+        <input type="number" id="amount" name="amount"><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address"><br>
+        <label for="phone">Phone Number:</label>
+        <input type="number" id="phone" name="phone"><br>
+        <label for="image">Home Image:</label>
+        <input type="file" id="image" name="image"><br>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById('seller-form');
+            const amountInput = document.getElementById('amount');
+            const addressInput = document.getElementById('address');
+            const phoneInput = document.getElementById('phone');
+            const imageInput = document.getElementById('image');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Validate amount
+                if (amountInput.value.trim() === '') {
+                    alert('Please enter the rate.');
+                    return;
+                }
+
+                // Validate address
+                if (addressInput.value.trim() === '') {
+                    alert('Please enter the address.');
+                    return;
+                }
+
+                // Validate phone number
+                const phoneNumber = phoneInput.value.trim();
+                if (phoneNumber === '' || phoneNumber.length !== 10 || isNaN(phoneNumber)) {
+                    alert('Please enter a valid 10-digit phone number.');
+                    return;
+                }
+
+                // Validate image
+                if (imageInput.files.length === 0) {
+                    alert('Please upload a home image.');
+                    return;
+                }
+
+                const form = document.getElementById('seller-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Perform additional validation if needed
+            if (form.checkValidity()) {
+                // If form is valid, show the thank you message
+                alert('Thanks for your details! We will contact you shortly.');
+            }
+        });
+
+                // If all validations pass, submit the form
+                form.submit();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Family Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+         /* width */
+  ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  display: none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(12, 12, 15, 0.655); 
+}
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+        h3 {
+            text-align: center;
+            margin-top: 30px;
+            color: #007bff;
+            font-size: 24px;
+        }
+        .blueprint-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .blueprint-container img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .location {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .location iframe {
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li::before {
+            content: "\2022";
+            color: #007bff;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .feature-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Single Family Home</h1>
+    </header>
+    <div class="content">
+        <h3>About Single Family Home</h3>
+        <p>Single Family Home is a cozy residential property nestled in a serene neighborhood, perfect for families looking for comfort and tranquility. With spacious interiors and a charming exterior, it offers the ideal blend of modern living and traditional aesthetics.</p>
+        <h3>Home Blue Print</h3>
+        <div class="blueprint-container">
+            <img src="png/bluePrint3.png" alt="Single Family Home Blueprint">
+        </div>
+        <h3>Location</h3>
+        <div class="location">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124450.46156569327!2d80.01565024335936!3d12.902775100000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f11c2e1038b%3A0x5119f19b8a70e530!2sIndependent%20Houses%20Selaiyur!5e0!3m2!1sen!2sin!4v1713739929762!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <h3>Features of Single Family Home</h3>
+        <ul>
+            <li class="feature-item">Spacious living areas for family gatherings and entertainment</li>
+            <li class="feature-item">Beautifully landscaped garden with lush greenery</li>
+            <li class="feature-item">Modern kitchen equipped with state-of-the-art appliances</li>
+            <li class="feature-item">Cozy bedrooms with ample natural light</li>
+            <li class="feature-item">Peaceful and safe neighborhood with friendly neighbors</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Blueprint Planning</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+         /* width */
+  ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  display: none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(12, 12, 15, 0.655); 
+}
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+        h3 {
+            text-align: center;
+            margin-top: 30px;
+            color: #007bff;
+            font-size: 24px;
+        }
+        .blueprint-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .blueprint-container img {
+            width: 50%;
+            height: 40% ;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .location {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .location iframe {
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        li::before {
+            content: "\2022";
+            color: #007bff;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            margin-right: 5px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Home Blueprint Planning</h1>
+    </header>
+    <div class="content">
+        <h3>About Our Home Blueprint</h3>
+        <p>Our home blueprint features innovative design and thoughtful planning to create a comfortable and functional living space. With meticulous attention to detail, our architects have crafted a blueprint that reflects modern living trends and ensures optimal utilization of space.</p>
+        <h3>Blueprint Overview</h3>
+        <div class="blueprint-container">
+            <img src="png/homeBlueprint.png" alt="Home Blueprint">
+        </div>
+        <h3>Location</h3>
+        <div class="location">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124450.46156569327!2d80.01565024335936!3d12.902775100000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f11c2e1038b%3A0x5119f19b8a70e530!2sHome%20Blueprint%20Location!5e0!3m2!1sen!2sin!4v1713739929762!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <h3>Key Features</h3>
+        <ul>
+            <li class="feature-item">
+                <img src="png/spacious.png" alt="Spacious">
+                Spacious living area with open floor plan
+            </li>
+            <li class="feature-item">
+                <img src="png/modern.png" alt="Modern">
+                Modern kitchen with high-end appliances
+            </li>
+            <li class="feature-item">
+                <img src="png/luxurious.png" alt="Luxurious">
+                Luxurious master bedroom suite
+            </li>
+            <li class="feature-item">
+                <img src="png/bathroom.png" alt="Bathroom">
+                Well-appointed bathrooms with premium fixtures
+            </li>
+            <li class="feature-item">
+                <img src="png/patio.png" alt="Patio">
+                Outdoor patio and garden space
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
