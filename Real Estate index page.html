@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Platform</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body> 
+  <div class="head">
+  <div class="social-links">
+    <h3>Follow Us</h3>
+    <a href="http://facebook.com" class="social-icon"> <div><img src="html/Images/facebook_2504903.png" alt=""></div></a>
+    <a href="http://instagram.com" class="social-icon"> <div><img src="html/Images/instagram_174855.png" alt=""></div></a>
+    <a href="http://github.com" class="social-icon"> <div><img src="html/Images/github_3291695.png" alt=""></div></a>
+  </div>
+    <header>Real Estate Platform</header>   
+
+    <div id="Login">
+      <a href="html/login.html" class="login-button">Login</a>
+    </div>
+  </div>
+         <div class="popup">
+            <div class="tabs">
+                <input type="radio" id="tab1" name="tab" value="html/home" checked="true">        
+                <label for="tab1">Home</label> </input>
+                <input type="radio" id="tab2" name="tab" value="html/product">
+                <label for="tab2">Products</label></input>
+                <input type="radio" id="tab3" name="tab" value="html/service">
+                <label for="tab3">Service</label></input>
+                <input type="radio" id="tab4" name="tab" value="html/blogs">
+                <label for="tab4">Blogs</label></input>
+                  <input type="radio" id="tab5" name="tab" value="html/aboutUs">
+                <label for="tab5">About Us</label></input>
+                  <input type="radio" id="tab6" name="tab" value="html/Visme Forms Player">
+                <label for="tab6">Contact Us</label></input>
+                 <div class="marker">
+                   <div id="top"></div>
+                  <div id="bottom"></div>
+                </div>
+              </div>               
+<div id="content">
+    <!-- Content will be loaded here -->
+    <object type="text/html" data="html/home.html">
+    </object>
+
+</div>    
+  <script src="JavaScript/script.js"></script>      
+</div>
+
+     
+    <footer id="contact">
+      <div class="container">
+          <div class="footer-content">
+              <div class="contact-info">
+                  <h2>Contact Us</h2>
+                  <p><i class="fas fa-map-marker-alt icon"></i> 123 Pattinathar St, Mogappair East, Chennai, India</p>
+                  <p><i class="fas fa-envelope icon"></i> info@dreamhomeplanner.com</p>
+                  <p><i class="fas fa-phone icon"></i> 987-654-3210</p>
+                </div>
+              </div>
+              <div class="newsletter">
+                  <h3>Subscribe to Our Newsletter</h3>
+                  <form action="mailto:info@dreamhomeplanner.com" method="post">
+                      <input type="email" name="email" placeholder="Enter your email" required>
+                      <button type="submit">Subscribe</button>
+                  </form>
+              </div>
+         
+      </div>   
+      <div class="PrivacyPolicy"> <a href="html/privacyPolicy.html"> Privacy policy</a></div>
+         
+    <div class="footer-bottom">
+     <marquee behavior="group_12099678" direction="left"> <p>&copy; 2024 DreamHome Planner. All rights reserved.</p></marquee>
+    </div>
+    </div>
+    </footer>
+      
+<script>
+  function handleScreenChange(mediaQuery) {
+ if (mediaQuery.matches) {
+   window.location.href = "html/sample4.html";
+ } 
+}
+
+const mediaQuery = window.matchMedia("(max-width: 500px) and (max-height: 950px)");
+
+function handleResize() {
+ if (window.innerWidth > 500 && window.innerHeight > 950) {
+   window.location.href = originalHtml;
+ }
+}
+
+handleScreenChange(mediaQuery); // Check on initial load
+mediaQuery.addListener(handleScreenChange); // Listen for changes
+window.addEventListener("resize", handleResize);
+</script>
+    </body>
+    </html> 
