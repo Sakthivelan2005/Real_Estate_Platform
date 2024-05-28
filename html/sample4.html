@@ -10,18 +10,28 @@
     height: 100%;
     width: 100%;
     font-family: monospace; 
+    
   }
          body{
       justify-content: center;
       align-items: center;
-      background-image: url(image1.jpg);
+      background-image: url(jpg/image1.jpg);
       background-size: cover;
+      overflow-y: scroll;
+      border-radius: 20px;
           
+    }
+
+    .header{
+      text-align: center;
+      background-color: #f0f8ff6e;
+
     }
 
      /* width */
   ::-webkit-scrollbar {
   width: 10px;
+  display: none;
 }
 
 /* Track */
@@ -48,7 +58,7 @@
           font-weight: 700; 
           text-align: center;
           color: #525d6f; 
-          padding: 4%;
+          padding-top: 4%;
           border-radius: 200px;
     }
     label{
@@ -119,8 +129,9 @@
       height: 100%;
       width: 100%;
       margin-right: 0%;
-      background-color: 16px 16px 48px #2e364330;
-     
+      background-color: #dfe6ed;
+      box-sizing: border-box;
+      border-radius: 30px;
      
    }
   
@@ -344,12 +355,17 @@ h2 {
   display: flex;
   flex-direction: column;
   height: 190%;
+  border-radius: 20px;
 }
     </style>
 </head>
 <body>
-    <header>Real Estate Platform</header>  
-    <div class="main">  
+  <div class="header">
+    <header>CRORE PVT LTD.,</header>  
+    <h3>(Customer Resolution Organization for Real Estate)</h3>
+    <h2>"Visit Crore, Nothing need more"</h2> 
+  </div>
+  <div class="main">  
     <div class="popup">
         <div id="content">
             <!-- Content will be loaded here -->
