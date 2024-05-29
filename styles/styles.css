@@ -327,12 +327,16 @@ h2 {
 .PrivacyPolicy:hover {
   background-color: #ffcc00;
 }
-.PrivacyPolicy a {
+.PrivacyPolicy {
   color: #007bff;
   text-decoration: none;
   position: relative;
   z-index: 2;
   transition: color 0.3s ease;
+}
+
+a{
+  text-decoration: unset;
 }
 .PrivacyPolicy:hover a {
   color: #fff;
