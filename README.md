@@ -9,7 +9,9 @@
 <li>Spacious floor plans.</li>
 <li>Rooftop pool and fitness center.</li>
 <li>Convenient public transportation options.</li>
-<img src="html/png/pc2.png" alt="Design tool">
+
+![pc2](html/png/pc2.png)
+
 </ul>
 <p><strong>Amenities:</strong></p>
 <ul>
