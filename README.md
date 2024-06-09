@@ -4,6 +4,8 @@
 <p><strong>Location:</strong> 10th block, JJ Nagar East, Mogappair, Chennai-37</p>
 <p><strong>Overview:</strong></p>
 <p>Crore is a real estate development located in Chennai. This exciting new project offers modern living spaces, state-of-the-art amenities, convenient location.</p>
+###Demo
+<img src="html/png/Demo.png" style="border-radius:24px;">
 <p><strong>Key Features:</strong></p>
 <ul>
 <li>Spacious floor plans.</li>
