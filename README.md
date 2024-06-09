@@ -10,7 +10,7 @@
 <li>Rooftop pool and fitness center.</li>
 <li>Convenient public transportation options.</li>
 
-![pc2](html/png/pc2.png)
+![pc2](./html/png/pc2.png)
 
 </ul>
 <p><strong>Amenities:</strong></p>
