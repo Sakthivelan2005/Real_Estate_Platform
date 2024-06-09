@@ -11,10 +11,10 @@
 <li>Spacious floor plans.</li>
 <li>Rooftop pool and fitness center.</li>
 <li>Convenient public transportation options.</li>
-
-![pc2](./html/png/pc2.png)
-
 </ul>
+<br>
+![pc2](./html/png/pc2.png)
+<br>
 <p><strong>Amenities:</strong></p>
 <ul>
 <li>Community park.</li>
@@ -37,5 +37,5 @@
 </ul><ul>
 <li>JavaScript</li>
 </ul><h2>Project Status</h2>
-<hr><p>complete. But still having issues on design tool and login errors</p><h2>Contact</h2>
+<hr><p>completed. But still having issues on design tool and login errors</p><h2>Contact</h2>
 <hr><p><span style="margin-right: 30px;"></span><a href="https://github.com/Sakthivelan2005"><img target="_blank" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" style="width: 10%;"></a></p>
