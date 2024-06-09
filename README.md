@@ -13,7 +13,7 @@
 <li>Convenient public transportation options.</li>
 </ul>
 <br>
-![pc2](./html/png/pc2.png)
+<img src="html/png/pc2.png" style="border-radius:24px;">
 <br>
 <p><strong>Amenities:</strong></p>
 <ul>
